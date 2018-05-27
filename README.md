@@ -1,6 +1,8 @@
 # Unity Card Stack
 iOS 9+ app switcher style cards in Unity.
 
+![Alt Text](https://github.com/ryanslikesocool/Unity-Card-Stack/DemoGIF.gif)
+
 # Basic stuff
 A quick little thing I did in Unity 2018.1.1f1.  Feel free to do whatever as long as you don't claim the whole thing as your own.
 
