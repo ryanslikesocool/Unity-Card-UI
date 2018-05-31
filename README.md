@@ -2,9 +2,11 @@
 Some basic card style UI elements in Unity 2018.1.1f1
 
 Card stack
+
 ![Alt Text](https://github.com/ryanslikesocool/Unity-Card-Stack/blob/master/DemoGIF.gif)
 
 Falling popups
+
 ![Alt Text](https://github.com/ryanslikesocool/Unity-Card-Stack/blob/master/DemoGIF.gif)
 
 # Other Stuff
