@@ -9,5 +9,9 @@ Falling popups
 
 ![Alt Text](https://github.com/ryanslikesocool/Unity-Card-UI/blob/master/Falling%20Popups.gif)
 
+Expanding Card
+
+![Alt Text](https://github.com/ryanslikesocool/Unity-Card-UI/blob/master/Expanding%20Card.gif)
+
 # Other Stuff
 Drag and drop the contents anywhere into your project's Assets folder.  Most of the info you need is on the cards in the scenes.  The code is decently commented as well.  If you have any other questions or suggestions, feel free to create an issue.

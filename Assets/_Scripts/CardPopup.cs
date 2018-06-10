@@ -24,7 +24,7 @@ public class CardPopup : MonoBehaviour {
 			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(cardFallRotation), Time.deltaTime * rotationSpeed);
 		}
 
-///Everything in this fallToZero conditional is totally unnecessary.  I have it so the popup falls back nicely.		
+		///Everything in this fallToZero conditional is totally unnecessary.  I have it so the popup falls back nicely.		
 		if (fallToZero) {
 			transform.position = Vector3.Lerp(transform.position, startPosition, Time.deltaTime * centeringSpeed);
 			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Vector3.zero), Time.deltaTime * centeringSpeed);
@@ -34,7 +34,7 @@ public class CardPopup : MonoBehaviour {
 			}
 		}
 
-///This is also probably unnecessary.
+		///This is also probably unnecessary.
 		if (transform.position.y < -4) {
 			isFalling = false;
 			fallToZero = true;
@@ -44,7 +44,7 @@ public class CardPopup : MonoBehaviour {
 		}
 	}
 
-///A negative fallRotation will result in the card turning clockwise, while a positive fallRotation makes the card turn counterclockwise
+	///A negative fallRotation will result in the card turning clockwise, while a positive fallRotation makes the card turn counterclockwise.
 	public void CardFall(float fallRotation) {
 		fallToZero = false;
 		rbody.useGravity = true;
