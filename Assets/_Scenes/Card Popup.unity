@@ -210,7 +210,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 588019326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1594748303}
@@ -596,8 +596,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1594748303}
   - component: {fileID: 1594748305}
-  - component: {fileID: 1594748304}
   - component: {fileID: 1594748306}
+  - component: {fileID: 1594748304}
   m_Layer: 5
   m_Name: Popup Card
   m_TagString: Untagged
@@ -638,7 +638,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 58
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!222 &1594748305
 CanvasRenderer:

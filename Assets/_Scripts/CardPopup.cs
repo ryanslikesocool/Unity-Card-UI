@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CardPopup : MonoBehaviour {
 
 	public float rotationSpeed = 1f;
