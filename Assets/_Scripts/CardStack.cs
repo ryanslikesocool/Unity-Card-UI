@@ -8,15 +8,19 @@ public class CardStack : MonoBehaviour {
 	public float buttonCooldownTime = 0.125f;
 	public int cardZMultiplier = 32;
 	public int usedCardXPos = 1280;
-	public GameObject[] cards;
+	public Transform[] cards;
 	
 	private int cardArrayOffset;
 	private Vector3[] cardPositions;
-	private bool canMove = true;
 	private int xPowerDifference;
 
+	///Static variables can be used across the scene if this script is in it.
+	///Thankfully it doesn't matter if another script attempts to use the variable and this script isn't in the scene. 
+	public static bool canUseHorizontalAxis = true;
+
 	void Start () {
-		///I've found that 9 is a good number for this.  I wouldn't really recommend changing it, but go ahead if you want to.		
+		///I've found that 9 is a good number for this.
+		///I wouldn't really recommend changing it, but go ahead if you want to.		
 		xPowerDifference = 9 - cards.Length;
 
 		cardPositions = new Vector3[cards.Length * 2 - 1];
@@ -37,7 +41,7 @@ public class CardStack : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (canMove) {
+		if (canUseHorizontalAxis) {
 			///Controls for the cards.		
 			if (Input.GetAxisRaw("Horizontal") < 0 && cardArrayOffset > 0) {
 				cardArrayOffset--;
@@ -48,16 +52,26 @@ public class CardStack : MonoBehaviour {
 			}
 		}
 
-		///Moves the cards.  I know that none of my lerps are the "right way," but it looks much nicer.
+		///This loop moves the cards.  I know that none of my lerps are the "right way," but it looks much nicer.
 		for (int i = 0; i < cards.Length; i++) {
-			cards[i].transform.localPosition = Vector3.Lerp(cards[i].transform.localPosition, cardPositions[i + cardArrayOffset], Time.deltaTime * cardMoveSpeed);
+			cards[i].localPosition = Vector3.Lerp(cards[i].localPosition, cardPositions[i + cardArrayOffset], Time.deltaTime * cardMoveSpeed);
+			if (Mathf.Abs(cards[i].localPosition.x - cardPositions[i + cardArrayOffset].x) < 0.01f) {
+				cards[i].localPosition = cardPositions[i + cardArrayOffset];
+
+				///This disables interaction with cards that are not on top of the stack.
+				if (cards[i].localPosition.x == 0) {
+					cards[i].gameObject.GetComponent<CanvasGroup>().interactable = true;
+				} else {
+					cards[i].gameObject.GetComponent<CanvasGroup>().interactable = false;
+				}
+			}
 		}
 	}
 
-	///Stops the cards from scrolling quickly if a direction is held down.
+	///Stops the cards from scrolling super quickly if a button on the horizontal axis is held down.
 	IEnumerator ButtonCooldown() {
-		canMove = false;
+		canUseHorizontalAxis = false;
 		yield return new WaitForSeconds(buttonCooldownTime);
-		canMove = true;
+		canUseHorizontalAxis = true;
 	}
 }

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Card Stack.unity
+- path: Assets/_Scenes/Demo Scene.unity
   isLoaded: 1
   isActive: 1

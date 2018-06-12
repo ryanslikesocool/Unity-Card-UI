@@ -28,7 +28,6 @@ public class CardExpanding : MonoBehaviour {
 
 	void Start() {
 		rectTrans = GetComponent<RectTransform>();
-		cardCenter = rectTrans.localPosition;
 
 		///Setting up the button's starting color and page position.
 		buttonRect.gameObject.GetComponent<Image>().color = new Color32(228, 0, 0, 0);
@@ -56,6 +55,11 @@ public class CardExpanding : MonoBehaviour {
 
 				///Changes the button color so it's visible in the page view.
 				buttonRect.gameObject.GetComponent<Image>().color = Color32.Lerp(buttonRect.gameObject.GetComponent<Image>().color, new Color32(228, 0, 0, 191), Time.deltaTime * lerpSpeed);
+
+				if (Mathf.Abs(buttonRect.gameObject.GetComponent<Image>().color.a - 191) < 2) {
+					animationActive = 0;
+					CardStack.canUseHorizontalAxis = true;
+				}
 			}
 		///When animationActive == -1, the page is shrinking into a card.
 		} else if (animationActive == -1) {
@@ -69,17 +73,21 @@ public class CardExpanding : MonoBehaviour {
 				rectTrans.offsetMax = cardMax;
 
 				///Makes the button take up the whole card.
-				buttonRect.offsetMin = cardMin;
-				buttonRect.offsetMax = cardMax;
+				buttonRect.offsetMin = Vector2.zero;
+				buttonRect.offsetMax = Vector2.zero;
+
+				animationActive = 0;
+				CardStack.canUseHorizontalAxis = true;
 			}		
 		}
 	}
 
 	public void ToggleCard() {
+		CardStack.canUseHorizontalAxis = false;
 		if (animationActive != 1) {
 			animationActive = 1;
-			cardCenter = rectTrans.localPosition;
-			
+			cardCenter = transform.localPosition;
+
 			///Makes the button the right size in page view.
 			buttonRect.offsetMin = closeButtonMin;
 			buttonRect.offsetMax = closeButtonMax;
