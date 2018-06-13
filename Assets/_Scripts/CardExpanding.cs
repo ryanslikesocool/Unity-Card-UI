@@ -22,6 +22,10 @@ public class CardExpanding : MonoBehaviour {
 	private Vector2 pageMin;
 	private Vector2 pageMax;
 
+	public Image titleBarImage;
+	public Color32 hiddenTitleBarColor;
+	public Color32 revealedTitleBarColor;
+
 	private RectTransform rectTrans;
 	///I wouldn't recommend changing animationActive's value here unless you want the card to start as a page.
 	private int animationActive = -1;
@@ -30,9 +34,9 @@ public class CardExpanding : MonoBehaviour {
 		rectTrans = GetComponent<RectTransform>();
 
 		///Setting up the button's starting color and page position.
-		buttonRect.gameObject.GetComponent<Image>().color = new Color32(228, 0, 0, 0);
+		buttonRect.GetComponent<Image>().color = new Color32(228, 0, 0, 0);
 		
-		closeButtonMin = new Vector2(pageMin.x + pageSize.x - 80, pageMin.y + pageSize.y - 80);
+		closeButtonMin = new Vector2(pageMin.x + pageSize.x - 64, pageMin.y + pageSize.y - 64);
 		closeButtonMax = new Vector2(pageMax.x - 16, pageMax.y - 16);
 
 		///Setting up the card and page offsets.
@@ -41,6 +45,8 @@ public class CardExpanding : MonoBehaviour {
 
 		pageMin = new Vector2(pageCenter.x - pageSize.x * 0.5f, pageCenter.y - pageSize.y * 0.5f);
 		pageMax = new Vector2(pageCenter.x + pageSize.x * 0.5f, pageCenter.y + pageSize.y * 0.5f);
+
+		titleBarImage.color = hiddenTitleBarColor;
 	}
 	
 	void Update() {
@@ -49,21 +55,29 @@ public class CardExpanding : MonoBehaviour {
 			rectTrans.offsetMin = Vector2.Lerp(rectTrans.offsetMin, pageMin, Time.deltaTime * lerpSpeed);
 			rectTrans.offsetMax = Vector2.Lerp(rectTrans.offsetMax, pageMax, Time.deltaTime * lerpSpeed);
 
+			titleBarImage.color = Color32.Lerp(titleBarImage.color, revealedTitleBarColor, Time.deltaTime * lerpSpeed);
+
 			if (rectTrans.offsetMin.x < pageMin.x * 0.995f && rectTrans.offsetMin.y < pageMin.y * 0.995f && rectTrans.offsetMax.x > pageMax.x * 0.995f && rectTrans.offsetMax.y > pageMax.y * 0.995f) {
 				rectTrans.offsetMin = pageMin;
 				rectTrans.offsetMax = pageMax;
 
 				///Changes the button color so it's visible in the page view.
-				buttonRect.gameObject.GetComponent<Image>().color = Color32.Lerp(buttonRect.gameObject.GetComponent<Image>().color, new Color32(228, 0, 0, 191), Time.deltaTime * lerpSpeed);
+				buttonRect.GetComponent<Image>().color = Color32.Lerp(buttonRect.GetComponent<Image>().color, new Color32(228, 0, 0, 191), Time.deltaTime * lerpSpeed);
 
-				if (Mathf.Abs(buttonRect.gameObject.GetComponent<Image>().color.a - 191) < 2) {
+				if (Mathf.Abs(buttonRect.GetComponent<Image>().color.a - 191) < 2) {
+					titleBarImage.color = revealedTitleBarColor;
+					
+					buttonRect.GetComponent<Image>().color = new Color32(228, 0, 0, 191);
+					
 					animationActive = 0;
 					CardStack.canUseHorizontalAxis = true;
 				}
 			}
 		///When animationActive == -1, the page is shrinking into a card.
 		} else if (animationActive == -1) {
-			buttonRect.gameObject.GetComponent<Image>().color = Color32.Lerp(buttonRect.gameObject.GetComponent<Image>().color, new Color32(228, 0, 0, 0), Time.deltaTime * lerpSpeed * 1.25f);
+			titleBarImage.color = Color32.Lerp(titleBarImage.color, hiddenTitleBarColor, Time.deltaTime * lerpSpeed * 1.125f);
+
+			buttonRect.GetComponent<Image>().color = Color32.Lerp(buttonRect.GetComponent<Image>().color, new Color32(228, 0, 0, 0), Time.deltaTime * lerpSpeed * 1.25f);
 
 			rectTrans.offsetMin = Vector2.Lerp(rectTrans.offsetMin, cardMin, Time.deltaTime * lerpSpeed);
 			rectTrans.offsetMax = Vector2.Lerp(rectTrans.offsetMax, cardMax, Time.deltaTime * lerpSpeed);	
@@ -71,6 +85,8 @@ public class CardExpanding : MonoBehaviour {
 			if (rectTrans.offsetMin.x > cardMin.x * 1.005f && rectTrans.offsetMin.y > cardMin.y * 1.005f && rectTrans.offsetMax.x < cardMax.x * 1.005f && rectTrans.offsetMax.y < cardMax.y * 1.005f) {
 				rectTrans.offsetMin = cardMin;
 				rectTrans.offsetMax = cardMax;
+
+				titleBarImage.color = hiddenTitleBarColor;
 
 				///Makes the button take up the whole card.
 				buttonRect.offsetMin = Vector2.zero;

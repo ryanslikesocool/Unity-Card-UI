@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardStack : MonoBehaviour {
 
 	public float cardMoveSpeed = 8f;
 	public float buttonCooldownTime = 0.125f;
 	public int cardZMultiplier = 32;
+	public bool useDefaultUsedXPos = true;
 	public int usedCardXPos = 1280;
 	public Transform[] cards;
 	
@@ -22,6 +24,13 @@ public class CardStack : MonoBehaviour {
 		///I've found that 9 is a good number for this.
 		///I wouldn't really recommend changing it, but go ahead if you want to.		
 		xPowerDifference = 9 - cards.Length;
+
+		///This is optional, but makes it super easy to figure out the offscreen position for cards.
+		///Unfortunately, it's only really useful if the cards are the same width.
+		if (useDefaultUsedXPos) {
+			int cardWidth = (int) (cards[0].GetComponent<RectTransform>().rect.width);
+			usedCardXPos = (int) (Screen.width * 0.5f + cardWidth);
+		}
 
 		cardPositions = new Vector3[cards.Length * 2 - 1];
 
