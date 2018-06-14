@@ -51,9 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\CardExpanding.cs" />
-     <Compile Include="Assets\_Scripts\CardPopup.cs" />
-     <Compile Include="Assets\_Scripts\CardStack.cs" />
+     <Compile Include="Assets\_Scripts\2D Cards\CardExpanding2D.cs" />
+     <Compile Include="Assets\_Scripts\2D Cards\CardPopup2D.cs" />
+     <Compile Include="Assets\_Scripts\2D Cards\CardStack2D.cs" />
+     <Compile Include="Assets\_Scripts\3D Cards\CardExpanding3D.cs" />
+     <Compile Include="Assets\_Scripts\3D Cards\CardPopup3D.cs" />
+     <Compile Include="Assets\_Scripts\3D Cards\CardStack3D.cs" />
+     <Compile Include="Assets\_Scripts\Superellipse Creation\MeshCreator.cs" />
+     <Compile Include="Assets\_Scripts\Superellipse Creation\SuperellipsePoints.cs" />
+     <Compile Include="Assets\_Scripts\Superellipse Creation\Triangulator.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/Users/ryanboyer/Unity-Card-UI/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
