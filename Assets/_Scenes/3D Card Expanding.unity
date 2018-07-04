@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731316, g: 0.38074902, b: 0.3587254, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731196, g: 0.38074002, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1006,7 +1006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48}
+  m_AnchoredPosition: {x: 0, y: -64}
   m_SizeDelta: {x: -64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055246184
@@ -1749,13 +1749,13 @@ MonoBehaviour:
   - {fileID: 226434253}
   - {fileID: 2072255532}
   cardCenter: {fileID: 269394805}
-  automaticallyDetermineCardTransform: 0
+  cardAutoSize: 0
   cardSize: {x: 630, y: 384}
   cardPosition: {x: 0, y: 64}
   cardSuperness: 4
-  automaticallyDeterminePageTransform: 1
-  pageSize: {x: 0, y: 0}
-  pagePosition: {x: 0, y: 0}
+  pageAutoSize: 0
+  pageSize: {x: 718, y: 384}
+  pagePosition: {x: 0, y: 459}
   pageSuperness: 96
 --- !u!1 &1388934042
 GameObject:
@@ -2474,11 +2474,11 @@ MonoBehaviour:
   - {fileID: 294284798}
   - {fileID: 1412876578}
   cardCenter: {fileID: 650961074}
-  automaticallyDetermineCardTransform: 0
+  cardAutoSize: 0
   cardSize: {x: 514, y: 192}
   cardPosition: {x: 0, y: -256}
   cardSuperness: 6
-  automaticallyDeterminePageTransform: 0
+  pageAutoSize: 0
   pageSize: {x: 720, y: 160}
   pagePosition: {x: 0, y: -560}
   pageSuperness: 96
@@ -2627,8 +2627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -44}
-  m_SizeDelta: {x: -64, y: -88}
+  m_AnchoredPosition: {x: 0, y: -52}
+  m_SizeDelta: {x: -64, y: -104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101719482
 MonoBehaviour:

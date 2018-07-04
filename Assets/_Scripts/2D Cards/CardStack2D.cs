@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class CardStack2D : MonoBehaviour {
 
-	public float cardMoveSpeed = 8f;
-	public float buttonCooldownTime = 0.125f;
-	public int cardZMultiplier = 32;
-	public bool useDefaultUsedXPos = true;
-	public int usedCardXPos = 1280;
-	public Transform[] cards;
+	[SerializeField]
+	private float cardMoveSpeed = 8f;
+	[SerializeField]
+	private float buttonCooldownTime = 0.125f;
+	[SerializeField]
+	private int cardZMultiplier = 32;
+	[SerializeField]
+	private bool useDefaultUsedXPos = true;
+	[SerializeField]
+	private int usedCardXPos = 1280;
+	[SerializeField]
+	private Transform[] cards;
 	
 	private int cardArrayOffset;
 	private Vector3[] cardPositions;

@@ -5,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class CardPopup2D : MonoBehaviour {
 
-	public float rotationSpeed = 1f;
-	public float centeringSpeed = 4f;
-	public bool singleScene;
+	[SerializeField]
+	private float rotationSpeed = 1f;
+	[SerializeField]
+	private float centeringSpeed = 4f;
+	[SerializeField]
+	private bool singleScene;
 
 	private Rigidbody rbody;
 	private bool isFalling;

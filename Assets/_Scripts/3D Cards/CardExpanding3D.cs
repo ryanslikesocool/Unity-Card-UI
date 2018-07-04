@@ -16,7 +16,7 @@ public class CardExpanding3D : MonoBehaviour {
 
 	[Header("Card Info")]
 	[Tooltip("Positions and sizes card to its current transform.")]
-	public bool automaticallyDetermineCardTransform = true;
+	public bool cardAutoSize = true;
 	public Vector2 cardSize;
 	public Vector2 cardPosition;
 	[Range(1, 96)]
@@ -24,7 +24,7 @@ public class CardExpanding3D : MonoBehaviour {
 
 	[Header("Page Info")]
 	[Tooltip("Positions and sizes the page to the top third of the screen.")]
-	public bool automaticallyDeterminePageTransform = true;
+	public bool pageAutoSize = true;
 	public Vector2 pageSize;
 	public Vector2 pagePosition;
 	[Range(1, 96)]
@@ -46,12 +46,12 @@ public class CardExpanding3D : MonoBehaviour {
 	private Vector2 nextMax;
 
 	void Start() {
-		if (automaticallyDetermineCardTransform) {
+		if (cardAutoSize) {
 			cardSize = new Vector2(cardCorners[0].localScale.x * 2 + cardEdges[0].localScale.x, cardCorners[0].localScale.y * 2 + cardEdges[0].localScale.y);
 			cardPosition = cardCenter.localPosition;
 		}
 
-		if (automaticallyDeterminePageTransform) {
+		if (pageAutoSize) {
 			pageSize = new Vector2(Screen.width, Screen.height / 3);
 			pagePosition = new Vector2(0, Screen.height / 2 - pageSize.y / 2);
 		}
