@@ -23,9 +23,5 @@ Drag and drop the contents of the Assets folder anywhere into your project's Ass
 ## Credits
 #### Unify Community Wiki
 Triangulator.cs, PolygonTester.cs (which I renamed to MeshCreator.cs)
-#### Ryan McLeod
-Inspiration
-#### My dad
-Some math help
 #### me
 Most everything else
