@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/3D Card Expanding.unity
+- path: Assets/_Scenes/Superellipse Playground.unity
   isLoaded: 1
   isActive: 1
