@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/_Scenes/2D Card Elastic and Fling.unity
-  isLoaded: 1
-  isActive: 1
